@@ -1,1 +1,41 @@
-# SQL
+-- EASY SECTION
+-- 1. Definitions
+-- Data: Raw facts or figures that can be processed to obtain information.
+-- Database: An organized collection of data stored and accessed electronically.
+-- Relational Database: A database storing data in tables related by keys.
+-- Table: A structure that stores data in rows and columns.
+
+-- 2. Five Key Features of SQL Server
+-- 1. High performance and scalability
+-- 2. Security and encryption features
+-- 3. Backup and recovery options
+-- 4. Integration Services (SSIS)
+-- 5. Advanced analytics and reporting
+
+-- 3. Authentication Modes
+-- 1. Windows Authentication Mode
+-- 2. SQL Server Authentication Mode
+
+
+-- MEDIUM SECTION
+-- 4. Create new database
+CREATE DATABASE SchoolDB;
+GO
+
+-- Use the new database
+USE SchoolDB;
+GO
+
+-- 5. Create Students table
+CREATE TABLE Students (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Age INT
+);
+GO
+
+-- 6. Differences between SQL Server, SSMS, and SQL
+-- SQL Server: The database engine that stores and manages data.
+-- SSMS: SQL Server Management Studio - GUI tool for managing SQL Server.
+-- SQL: Structured Query Language - used to communicate with the database.
+
