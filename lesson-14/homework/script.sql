@@ -40,3 +40,21 @@ FROM dbo.Employee AS e
 JOIN dbo.Employee AS m
   ON m.EmployeeID = e.ManagerID
 WHERE e.Salary > m.Salary;
+
+WITH Years AS (
+  SELECT
+    e.EmployeeID,
+    e.FirstName,
+    e.LastName,
+    e.HireDate,
+    -- Exact full-year diff (anniversary-adjusted)
+    DATEDIFF(YEAR, e.HireDate, GETDATE())
+      - CASE WHEN DATEADD(YEAR, DATEDIFF(YEAR, e.HireDate, GETDATE()), e.HireDate) > GETDATE()
+             THEN 1 ELSE 0 END AS YearsOfService
+  FROM dbo.Employee AS e
+)
+SELECT EmployeeID, FirstName, LastName, HireDate, YearsOfService
+FROM Years
+WHERE YearsOfService > 10 AND YearsOfService < 15
+ORDER BY YearsOfService DESC, HireDate;
+
